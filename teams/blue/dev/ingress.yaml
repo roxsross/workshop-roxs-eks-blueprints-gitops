@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: release-devfinder-service-ingress
+  namespace: team-blue-dev
+  labels:
+    app.kubernetes.io/created-by: eks-workshop
+    app.kubernetes.io/type: app  
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: devfinder.roxs.dev
+      http:
+        paths:
+          - backend:
+              service: 
+                name: devfinder-web-service
+                port: 
+                  number: 80
+            path: /
+            pathType: Prefix

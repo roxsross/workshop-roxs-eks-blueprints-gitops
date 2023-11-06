@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: addons-argo
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    namespace: argo
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/roxsross/workshop-roxs-eks-blueprints-gitops.git
+    targetRevision: master
+    path: addons/argo
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
