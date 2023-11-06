@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: devfinder-web-container
-        image: roxsross12/workshop-roxs-eks-blueprints-demo:7b8520cd
+        image: roxsross12/workshop-roxs-eks-blueprints-demo:1c7a52ff
         ports:
         - containerPort: 80
         resources:
